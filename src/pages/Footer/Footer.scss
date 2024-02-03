@@ -1,0 +1,26 @@
+footer{
+    background-color: #224193;
+    color: #DF3C5F;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    .footer-section{
+        ul{
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            i{
+                font-size: 20px;
+                text-decoration: none;
+                color: #DF3C5F;
+                cursor: pointer;
+            }
+        }
+    }
+}
