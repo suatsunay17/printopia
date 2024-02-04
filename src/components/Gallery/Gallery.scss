@@ -1,0 +1,17 @@
+.gallery {
+    padding: 20px;
+  
+    ul {
+      list-style-type: none; // Remove default list styling
+      padding: 0;
+  
+      li {
+        display: inline-block; // Display posts side by side
+        margin-right: 16px; // Space between posts horizontally
+  
+        &:last-child {
+          margin-right: 0; // Remove margin for the last post
+        }
+      }
+    }
+  }
