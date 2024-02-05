@@ -1,0 +1,64 @@
+.reg-main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .register-form {
+    width: 400px; // Maximum width of the form
+    margin: 0 auto; // Center the form
+    padding: 20px;
+    border: 1px solid #ddd; // Light border for the form
+    border-radius: 8px; // Rounded corners
+    background-color: #f9f9f9; // Light background color
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow
+
+    h2 {
+      color: #333;
+      text-align: center; // Center align the title
+      margin-bottom: 20px; // Space below the title
+    }
+
+    .form-group {
+      margin-bottom: 15px; // Space below each form group
+
+      label {
+        display: block;
+        margin-bottom: 5px; // Space below the label
+        color: #555; // Slightly dark color for the label
+      }
+
+      input {
+        width: 100%; // Full width
+        padding: 10px; // Padding inside the input fields
+        border: 1px solid #ccc; // Border for the input fields
+        border-radius: 4px; // Rounded corners for the input fields
+        box-sizing: border-box; // Box-sizing
+
+        &:focus {
+          border-color: #224193; // Change border color on focus
+          outline: none; // Remove the default focus outline
+        }
+      }
+    }
+
+    button {
+      width: 100%; // Full width
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #224193; // Button background color
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken(
+          #224193,
+          10%
+        ); // Darken the button color on hover
+      }
+    }
+  }
+}
