@@ -7,6 +7,7 @@ import Forum from "./components/Forum/Forum";
 import NoMatch from "./pages/NoMatch/NoMatch";
 
 import { Routes, Route, Outlet } from "react-router-dom";
+import Register from './components/Auth/Register/Register';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="forum" element={<Forum />} />
+          <Route path="register" element={<Register />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
