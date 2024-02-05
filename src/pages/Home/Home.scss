@@ -6,9 +6,10 @@
     rgba(34, 65, 147, 1) 100%
   );
   color: #6f9bd1;
-  padding:46px 40px;
+  padding: 46px 40px;
   display: flex;
   gap: 2rem;
+  
   .welcome {
     max-width: 720px;
 
@@ -47,18 +48,18 @@
       width: 400px;
     }
 
-    .img1{
-        position: absolute;
-        z-index: 2;
-        top: 50px;
-        right: 1;
+    .img1 {
+      position: absolute;
+      z-index: 2;
+      top: 50px;
+      right: 1;
     }
 
-    .img2{
-        position: absolute;
-        z-index: 1;
-        top: 200px;
-        right: -700px;
+    .img2 {
+      position: absolute;
+      z-index: 1;
+      top: 200px;
+      right: -700px;
     }
   }
 }
