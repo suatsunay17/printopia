@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase"; // Adjust the import path
+import { createUserWithEmailAndPassword } from "firebase/auth"; // Use compat version
+import { useNavigate } from "react-router-dom";
 
 import "./Register.scss";
 
 function Register() {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -16,12 +19,12 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const auth = getAuth();
     createUserWithEmailAndPassword(auth, userData.email, userData.password)
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
         // Additional actions upon successful registration
+        navigate("/login");
       })
       .catch((error) => {
         const errorCode = error.code;
