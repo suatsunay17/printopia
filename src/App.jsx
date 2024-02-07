@@ -13,6 +13,7 @@ import Login from "./components/Auth/Login/Login";
 import Profile from "./components/Profile/Profile";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
+import RequireAuth from "./components/Auth/require-auth";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -35,7 +36,11 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route
             path="profile"
-            element={currentUser ? <Profile /> : <Home />}
+            element={
+              <RequireAuth>
+                <Profile />
+              </RequireAuth>
+            }
           />
           <Route path="*" element={<NoMatch />} />
         </Route>
