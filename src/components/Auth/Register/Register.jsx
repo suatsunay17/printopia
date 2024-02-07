@@ -1,37 +1,70 @@
-import React, { useState } from "react";
-import { auth } from "../../../firebase"; // Adjust the import path
-import { createUserWithEmailAndPassword } from "firebase/auth"; // Use compat version
+import React, { useState, useContext } from "react";
+import { signUpUser } from "../../../firebase/firebase"; // Adjust this path to your firebase.js file
 import { useNavigate } from "react-router-dom";
 
 import "./Register.scss";
 
+const defaultUserData = {
+  email: "",
+  password: "",
+};
+
+const initPasswordValues = {
+  has6Char: false,
+  hasUpper: false,
+  hasLower: false,
+};
+
 function Register() {
-  const navigate = useNavigate();
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
+  const [userData, setUserData] = useState(defaultUserData);
+  const [passwordCriteria, setPasswordCriteria] = useState({
+    has6Char: false,
+    hasUpper: false,
+    hasLower: false,
   });
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+
+    if (name === "password") {
+      setPasswordCriteria({
+        has6Char: value.length >= 6,
+        hasUpper: /[A-Z]/.test(value),
+        hasLower: /[a-z]/.test(value),
+      });
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const isPasswordValid = () => {
+    return Object.values(passwordCriteria).every(Boolean);
+  };
 
-    createUserWithEmailAndPassword(auth, userData.email, userData.password)
-      .then((userCredential) => {
-        // Signed up
-        const user = userCredential.user;
-        // Additional actions upon successful registration
-        navigate("/login");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Registration error:", errorCode, errorMessage);
-        // Display or log the error message
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!isPasswordValid()) {
+      setError("Password must meet all criteria.");
+      return;
+    }
+
+    try {
+      await signUpUser(userData.email, userData.password);
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const renderCriteria = (criteria, text) => {
+    return (
+      <p style={{ color: criteria ? "green" : "red" }}>
+        {criteria ? "✔️" : "❌"} {text}
+      </p>
+    );
   };
 
   return (
@@ -63,8 +96,15 @@ function Register() {
             />
           </div>
 
+          {error && <p className="error">{error}</p>}
+
           <button type="submit">Register</button>
         </form>
+        <div className="password-criteria">
+          {renderCriteria(passwordCriteria.has6Char, "At least 6 characters")}
+          {renderCriteria(passwordCriteria.hasUpper, "Contains an uppercase letter")}
+          {renderCriteria(passwordCriteria.hasLower, "Contains a lowercase letter")}
+        </div>
       </div>
     </div>
   );
