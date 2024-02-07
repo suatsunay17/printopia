@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet, useNavigate } from "react-router-dom";
 
 import "./App.css";
 import Header from "./pages/Header/Header";
@@ -11,9 +11,19 @@ import NoMatch from "./pages/NoMatch/NoMatch";
 import Register from "./components/Auth/Register/Register";
 import Login from "./components/Auth/Login/Login";
 import Profile from "./components/Profile/Profile";
-
+import { useContext, useEffect } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/");
+    }
+  }, [currentUser]);
+
   return (
     <div className="app">
       <Routes>
@@ -23,7 +33,10 @@ function App() {
           <Route path="forum" element={<Forum />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="profile" element={<Profile />} />
+          <Route
+            path="profile"
+            element={currentUser ? <Profile /> : <Home />}
+          />
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
@@ -34,9 +47,9 @@ function App() {
 function Layout() {
   return (
     <>
-        <Header />
-        <Outlet />
-        <Footer />
+      <Header />
+      <Outlet />
+      <Footer />
     </>
   );
 }
