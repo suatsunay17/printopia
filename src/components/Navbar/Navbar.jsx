@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
+import { AuthContext } from "../../context/AuthContext";
 
 function Navbar() {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <div className="navbar">
       <ul>
@@ -12,8 +15,16 @@ function Navbar() {
           <Link to={"/forum"}>Forum</Link>
         </div>
         <div className="profile-links">
-          <Link to={"/register"}>Register</Link>
-          <Link to={"/login"}>Login</Link>
+          {currentUser ? (
+            <div>
+              <Link to={"/profile"}> Profile</Link>
+            </div>
+          ) : (
+            <div>
+              <Link to={"/register"}>Register</Link>
+              <Link to={"/login"}>Login</Link>
+            </div>
+          )}
         </div>
       </ul>
     </div>
