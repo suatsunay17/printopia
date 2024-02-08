@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {  signInUser } from "../../../firebase/firebase"; // Adjust this path to your firebase.js file
-import { useNavigate } from "react-router-dom"; // Import useNavigate hook from react-router-dom
+import { signInUser } from "../../../firebase/firebase"; // Adjust this path to your firebase.js file
+import { useNavigate } from "react-router-dom";
 
 import "./Login.scss";
 
@@ -15,10 +15,6 @@ function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const resetUserData = () => {
-    return setUserData(defaultUserData);
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
@@ -30,25 +26,13 @@ function Login() {
 
     try {
       const userCredentials = await signInUser(email, password);
-
       if (userCredentials) {
-        resetUserData();
         navigate("/");
       }
     } catch (error) {
-      console.log("User Sign In Failed", error.message);
+      setError("Login failed: " + 'Incorrect email or password'); // Set the error message
+      console.error("User Sign In Failed", error);
     }
-
-    //   const userCredential = await signInWithEmailAndPassword(
-    //     auth,
-    //     userData.email,
-    //     userData.password
-    //   );
-    //   // User signed in
-    //   navigate("/"); // Redirect to dashboard or another page
-    // } catch (error) {
-    //   setError(error.message); // Display error message
-    // }
   };
 
   return (
