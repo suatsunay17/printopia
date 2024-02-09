@@ -1,0 +1,44 @@
+.forum{
+    height: 100vh;
+    background: rgb(223, 60, 95);
+    background: radial-gradient(
+      circle,
+      rgba(223, 60, 95, 1) 0%,
+      rgba(34, 65, 147, 1) 100%
+    );
+    color: #6f9bd1;
+    padding: 22px;
+
+    button {
+        position: absolute;
+        right: 0;
+        margin-right: 16px;
+        padding: 10px 15px;
+        background-color: #DF3C5F; 
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+      
+        &:hover {
+          background-color: darken(#224193, 10%); 
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+        }
+      
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(34, 65, 147, 0.5);
+        }
+      
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+
+        a{
+            color: white;
+            text-decoration: none;
+        }
+      }
+}
