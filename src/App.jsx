@@ -14,6 +14,7 @@ import Profile from "./components/Profile/Profile";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
 import RequireAuth from "./components/Auth/require-auth";
+import CreatePost from "./components/Forum/CreatePost/CreatePost";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -34,6 +35,7 @@ function App() {
           <Route path="forum" element={<Forum />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
+          <Route path="create" element={<CreatePost />} />
           <Route
             path="profile"
             element={
