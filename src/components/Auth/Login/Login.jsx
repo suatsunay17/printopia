@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { signInUser } from "../../../firebase/firebase"; // Adjust this path to your firebase.js file
+import { signInUser } from "../../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 import "./Login.scss";
@@ -22,7 +22,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Reset error message
+    setError(""); 
 
     try {
       const userCredentials = await signInUser(email, password);
@@ -30,7 +30,7 @@ function Login() {
         navigate("/");
       }
     } catch (error) {
-      setError("Login failed: " + 'Incorrect email or password'); // Set the error message
+      setError("Login failed: " + 'Incorrect email or password'); 
       console.error("User Sign In Failed", error);
     }
   };
