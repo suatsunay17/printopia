@@ -1,4 +1,3 @@
-// PostCard.jsx
 import React from 'react';
 import './PostCard.scss'
 
