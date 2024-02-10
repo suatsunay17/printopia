@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { signUpUser } from "../../../firebase/firebase"; // Adjust this path to your firebase.js file
+import { signUpUser } from "../../../firebase/firebase"; 
 import { useNavigate } from "react-router-dom";
 
 import "./Register.scss";

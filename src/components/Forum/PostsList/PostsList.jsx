@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../../firebase/firebase"; // Adjust this path to your firebase.js file
+import { db } from "../../../firebase/firebase"; 
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import PostCard from "../PostCard/PostCard";
 import './PostsList.scss'
