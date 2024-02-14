@@ -15,6 +15,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
 import RequireAuth from "./components/Auth/require-auth";
 import CreatePost from "./components/Forum/CreatePost/CreatePost";
+import Prod from "./components/Prod/Prod";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -54,6 +55,7 @@ function App() {
 function Layout() {
   return (
     <>
+    <Prod/>
       <Header />
       <Outlet />
       <Footer />
