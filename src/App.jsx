@@ -55,7 +55,7 @@ function App() {
 function Layout() {
   return (
     <>
-    <Prod/>
+      <Prod />
       <Header />
       <Outlet />
       <Footer />
