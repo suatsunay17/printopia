@@ -1,65 +1,73 @@
-.home {
+.home-main {
+  height: 100vh;
   background: rgb(223, 60, 95);
-  background: radial-gradient(
-    circle,
-    rgba(223, 60, 95, 1) 0%,
-    rgba(34, 65, 147, 1) 100%
-  );
-  color: #6f9bd1;
-  padding: 46px 40px;
-  display: flex;
-  gap: 2rem;
-  
-  .welcome {
-    max-width: 720px;
+    background: radial-gradient(
+      circle,
+      rgba(223, 60, 95, 1) 0%,
+      rgba(34, 65, 147, 1) 100%
+    );
+    color: #6f9bd1;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  .home {
+    display: flex;
+    padding: 46px 40px;
+    display: flex;
+    gap: 2rem;
 
-    h1 {
-      font-size: 52px;
-      font-weight: 600;
-      margin-bottom: 0.5em;
+    .welcome {
+      max-width: 720px;
+      
 
-      span {
-        font-weight: 900;
+      h1 {
+        font-size: 52px;
+        font-weight: 600;
+        margin-bottom: 0.5em;
+
+        span {
+          font-weight: 900;
+        }
+      }
+
+      h2 {
+        font-size: 38px;
+        margin-bottom: 1em;
+      }
+
+      h3 {
+        font-size: 2rem;
+        margin-bottom: 0.5em;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 1em;
+        font-weight: 500;
       }
     }
 
-    h2 {
-      font-size: 38px;
-      margin-bottom: 1em;
-    }
+    .images {
+      position: relative;
 
-    h3 {
-      font-size: 2rem;
-      margin-bottom: 0.5em;
-    }
+      img {
+        width: 400px;
+      }
 
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 1em;
-      font-weight: 500;
-    }
-  }
+      .img1 {
+        position: absolute;
+        z-index: 2;
+        top: 50px;
+        right: 1;
+      }
 
-  .images {
-    position: relative;
-
-    img {
-      width: 400px;
-    }
-
-    .img1 {
-      position: absolute;
-      z-index: 2;
-      top: 50px;
-      right: 1;
-    }
-
-    .img2 {
-      position: absolute;
-      z-index: 1;
-      top: 200px;
-      right: -700px;
+      .img2 {
+        position: absolute;
+        z-index: 1;
+        top: 200px;
+        right: -700px;
+      }
     }
   }
 }
