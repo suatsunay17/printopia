@@ -1,8 +1,6 @@
 import React from "react";
 import "./Home.scss";
-
-import printer1 from "../../assets/printer1.jpg";
-import printer2 from "../../assets/printer2.jpg";
+import HomeCarousel from "./HomeCarousel";
 
 function Home() {
   return (
@@ -31,8 +29,7 @@ function Home() {
           </p>
         </div>
         <div className="images">
-          <img src={printer1} alt="printer" className="img1" />
-          <img src={printer2} alt="printer" className="img2" />
+          <HomeCarousel />
         </div>
       </div>
     </div>
