@@ -1,5 +1,4 @@
 .home-main {
-  height: 100vh;
   background: rgb(223, 60, 95);
   background: radial-gradient(
     circle,
@@ -59,11 +58,16 @@
       img {
         width: 300px;
       }
+    }
 
-      .img1 {
-      }
+    @media screen and (max-width: 1200px) {
+      flex-direction: column;
+      width: 100%;
 
-      .img2 {
+      .welcome {
+        h1 {
+          font-size: 20px;
+        }
       }
     }
   }
