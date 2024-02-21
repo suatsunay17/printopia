@@ -1,4 +1,5 @@
 import { Routes, Route, Outlet, useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
 
 import "./App.css";
 import Header from "./pages/Header/Header";
@@ -7,15 +8,15 @@ import Footer from "./pages/Footer/Footer";
 import Gallery from "./components/Gallery/Gallery";
 import Forum from "./components/Forum/Forum";
 import NoMatch from "./pages/NoMatch/NoMatch";
-
 import Register from "./components/Auth/Register/Register";
 import Login from "./components/Auth/Login/Login";
 import Profile from "./components/Profile/Profile";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "./context/AuthContext";
 import RequireAuth from "./components/Auth/require-auth";
 import CreatePost from "./components/Forum/CreatePost/CreatePost";
 import Prod from "./components/Prod/Prod";
+import PostDetails from "./components/Forum/PostDetails/PostDetails";
+
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -37,6 +38,7 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="create" element={<CreatePost />} />
+          <Route path="/post/:postId" element={<PostDetails />} />
           <Route
             path="profile"
             element={
