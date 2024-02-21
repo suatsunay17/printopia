@@ -30,4 +30,4 @@ export const userStateListener = (callback) => {
 };
 
 export const SignOutUser = async () => await signOut(auth);
-export { db };
+export default db;
