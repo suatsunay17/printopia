@@ -1,6 +1,8 @@
 import React from "react";
 import { Carousel } from "primereact/carousel";
 
+import "./HomeCarousel.scss";
+
 import img1 from "../../assets/img1.jpg";
 import img2 from "../../assets/img2.jpg";
 import img3 from "../../assets/img3.jpg";
@@ -14,8 +16,9 @@ function HomeCarousel() {
     return (
       <div className=" p-d-flex p-ai-center p-jc-center">
         <img
+        className="slide-image"
           src={imgs}
-          style={{ width: "400px", height: "300px", objectFit: "cover" }}
+          style={{ maxWidth: "400px", height: "300px", objectFit: "cover" }}
         />
       </div>
     );
@@ -28,7 +31,7 @@ function HomeCarousel() {
         numVisible={1}
         numScroll={1}
         orientation="vertical"
-        verticalViewPortHeight="300px"
+        verticalViewPortHeight="310px"
         itemTemplate={productTemplate}
       />
     </div>
