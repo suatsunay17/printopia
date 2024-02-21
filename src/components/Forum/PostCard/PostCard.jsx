@@ -14,7 +14,7 @@ const PostCard = ({ post }) => {
         Posted by: {post?.createdBy?.displayName || "Anonymous user"} on{" "}
         {formattedDate}
       </p>
-      <Link to={`/post/${post.id}`} post={post}>View Details</Link>
+      <Link to={`/post/${post.id}`} >View Details</Link>
     </div>
   );
 };
