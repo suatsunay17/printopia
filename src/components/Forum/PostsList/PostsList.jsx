@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import  db  from "../../../firebase/firebase"; 
+import db from "../../../firebase/firebase";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import PostCard from "../PostCard/PostCard";
-import './PostsList.scss'
+import "./PostsList.scss";
+import { Link } from "react-router-dom";
 
 const PostsList = () => {
   const [posts, setPosts] = useState([]);
@@ -40,7 +41,7 @@ const PostsList = () => {
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
-              <PostCard post={post}/>
+                <PostCard post={post} />
             </li>
           ))}
         </ul>
