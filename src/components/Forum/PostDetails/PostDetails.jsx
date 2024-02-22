@@ -20,10 +20,8 @@ function PostDetails() {
       const docSnap = await getDoc(postRef);
 
       if (docSnap.exists()) {
-        // Document found, update state with its data
         setPost({ id: docSnap.id, ...docSnap.data() });
       } else {
-        // Document not found
         console.log("No such document!");
         setPost(null);
       }
