@@ -61,7 +61,10 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="gallery" element={<Gallery />} />
-          <Route path="forum" element={<Forum posts={posts} loading={loading}/>} />
+          <Route
+            path="forum"
+            element={<Forum posts={posts} loading={loading} />}
+          />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="create" element={<CreatePost />} />
