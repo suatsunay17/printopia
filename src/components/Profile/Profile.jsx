@@ -1,8 +1,8 @@
 import { useContext, useState, useEffect } from "react";
-import db from "../../firebase/firebase";
 import { AuthContext } from "../../context/AuthContext";
 import PostCard from "../Forum/PostCard/PostCard";
-import { collection, query, where, getDocs } from "firebase/firestore";
+
+import "./Profile.scss";
 
 function Profile({ posts }) {
   const { currentUser, signOut } = useContext(AuthContext);
@@ -22,12 +22,12 @@ function Profile({ posts }) {
   console.log(userPosts);
 
   return (
-    <div>
+    <div className="profile-main">
       <h3>Welcome! {currentUser?.email}</h3>
       <p>Sign In Status: {currentUser && "active"}</p>
       <button onClick={signOut}>Sign Out</button>
 
-      <h2>User's Posts</h2>
+      <h2>My Posts</h2>
       <div className="post-list">
         {userPosts.length > 0 ? (
           userPosts.map((post) => <PostCard key={post.id} post={post} />)
