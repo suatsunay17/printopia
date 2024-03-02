@@ -1,5 +1,8 @@
 import { Routes, Route, Outlet, useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import db from "./firebase/firebase";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
 import "./App.css";
 import Header from "./pages/Header/Header";
@@ -19,6 +22,9 @@ import PostDetails from "./components/Forum/PostDetails/PostDetails";
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -27,6 +33,27 @@ function App() {
       navigate("/");
     }
   }, [currentUser]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      try {
+        const querySnapshot = await getDocs(
+          query(collection(db, "posts"), orderBy("createdAt", "desc"))
+        );
+        const postList = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPosts(postList);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+      setLoading(false);
+    };
+
+    fetchPosts();
+  }, []);
 
   return (
     <div className="app">
@@ -43,7 +70,7 @@ function App() {
             path="profile"
             element={
               <RequireAuth>
-                <Profile />
+                <Profile posts={posts} />
               </RequireAuth>
             }
           />
