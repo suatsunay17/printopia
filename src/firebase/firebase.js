@@ -8,10 +8,12 @@ import {
 } from "firebase/auth";
 import { getFirebaseConfig } from "./firebase-config";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const app = initializeApp(getFirebaseConfig());
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 export const signInUser = async (email, password) => {
   if (!email || !password) return;
@@ -30,4 +32,4 @@ export const userStateListener = (callback) => {
 };
 
 export const SignOutUser = async () => await signOut(auth);
-export default db;
+export { db, storage };
