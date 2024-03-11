@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PostsList from "./PostsList/PostsList";
 import "./Forum.scss";
-import db from "../../firebase/firebase";
+// import db from "../../firebase/firebase";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
 function Forum({ posts, loading }) {

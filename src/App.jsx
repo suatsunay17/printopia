@@ -1,11 +1,10 @@
 import { Routes, Route, Outlet, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
-import db from "./firebase/firebase";
+import {db} from "./firebase/firebase";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
 import "./App.css";
-import Header from "./pages/Header/Header";
 import Home from "./pages/Home/Home";
 import Footer from "./pages/Footer/Footer";
 import Gallery from "./components/Gallery/Gallery";
@@ -20,6 +19,7 @@ import Prod from "./components/Prod/Prod";
 import PostDetails from "./components/Forum/PostDetails/PostDetails";
 
 import { AuthContext } from "./context/AuthContext";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -85,7 +85,7 @@ function Layout() {
   return (
     <>
       <Prod />
-      <Header />
+      <Navbar />
       <Outlet />
       <Footer />
     </>

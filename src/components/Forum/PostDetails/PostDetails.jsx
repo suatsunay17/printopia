@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import db from "../../../firebase/firebase.js";
+import {db} from "../../../firebase/firebase.js";
 import { AuthContext } from "../../../context/AuthContext";
 
 import './PostDetails.scss'
