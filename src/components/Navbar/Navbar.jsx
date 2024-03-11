@@ -8,25 +8,41 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <ul>
-        <div className="links">
-          <Link to={"/"}>Home</Link>
-          <Link to={"/gallery"}>Gallery</Link>
-          <Link to={"/forum"}>Forum</Link>
-        </div>
-        <div className="profile-links">
+      <h1>Printopia.</h1>
+      <div className="left">
+        <ul>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/gallery"}>Gallery</Link>
+          </li>
+          <li>
+            <Link to={"/forum"}>Forum</Link>
+          </li>
+        </ul>
+      </div>
+      <div className="right">
+        <ul>
           {currentUser ? (
             <div>
-              <Link to={"/profile"}> Profile</Link>
+              <li>
+                <Link to={"/profile"}> Profile</Link>
+              </li>
             </div>
           ) : (
             <div>
-              <Link to={"/register"}>Register</Link>
-              <Link to={"/login"}>Login</Link>
+              <li>
+                <Link to={"/register"}>Register</Link>
+              </li>
+              <li>
+                <Link to={"/login"}>Login</Link>
+              </li>
             </div>
           )}
-        </div>
-      </ul>
+          <i class="fa-solid fa-bars"></i>
+        </ul>
+      </div>
     </div>
   );
 }
